@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  portfolio:
+    image: portfolio:v1
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/usr/share/nginx/html
