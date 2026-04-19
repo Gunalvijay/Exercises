@@ -1,0 +1,35 @@
+:root {
+  --primary: black;
+  --secondary: gray;
+  --bg: white;
+  --text: black;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+header {
+  padding: 20px;
+  background: var(--primary);
+  color: white;
+  text-align: center;
+}
+
+main {
+  padding: 20px;
+}
+
+section {
+  background: var(--secondary);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+}
