@@ -1,0 +1,51 @@
+:root {
+  --primary: #2563eb;
+  --spacing: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.hero {
+  background: var(--primary);
+  color: white;
+  padding: 60px;
+  text-align: center;
+}
+
+.features {
+  display: flex;
+  gap: var(--spacing);
+  padding: var(--spacing);
+}
+
+.features div {
+  flex: 1;
+  background: #eee;
+  padding: 20px;
+}
+
+.price {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing);
+  padding: var(--spacing);
+}
+
+.card {
+  background: #ddd;
+  padding: 20px;
+  text-align: center;
+}
+
+.btn {
+  text-align: center;
+  padding: 40px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+}
