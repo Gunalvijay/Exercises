@@ -1,0 +1,51 @@
+#!/bin/bash
+
+RED='\033[31m'
+GREEN='\033[32m'
+NC='\033[0m'
+
+FAILED=0
+
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM)
+
+echo "======HTML validation==========="
+
+HTML_FILES=$(echo "$STAGED_FILES" | grep "\.html$")
+
+for file in $HTML_FILES;do
+	if ! grep -qi '<!DOCTYPE html>' "$file";then
+		echo -e "${RED} Error '<DOCTYPE html>' is not present in $file:${NC}"
+		FAILED=1
+	fi
+done
+
+echo "======CSS validation============="
+
+CSS_FILES=$(echo "$STAGED_FILES" | grep "\.css$")
+
+for file in $CSS_FILES;do
+	RESULT=$(grep -n '!important' "$file")
+	if [ -n "$RESULT" ];then
+		echo -e "${RED} Error in css $file:${NC}"
+		FAILED=1
+	fi
+done
+
+echo "=======Secret file validation====="
+
+for file in $STAGED_FILES;do
+	if [[ "$file" == ".env" || "$file" == secrets.* ]];then
+		echo -e "${RED} Secret files staged"
+		FAILED=1
+	fi
+done
+
+echo "===========Final validation======="
+
+if [ $FAILED -ne 0 ]; then
+    echo -e "${RED} Commit blocked due to errors.${NC}"
+    exit 1
+else
+    echo -e "${GREEN}✓ All checks passed. Commit allowed.${NC}"
+    exit 0
+fi

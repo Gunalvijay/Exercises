@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Blog</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f9fafb;
+      color: #111;
+    }
+
+    header, footer {
+      background: #1e3a8a;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    section {
+      background: white;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+
+    @media (min-width: 768px) {
+      main {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>My Blog</h1>
+</header>
+
+<main>
+  <section>
+    <h2>Home</h2>
+    <p>This is the Home section.</p>
+  </section>
+  <section>
+    <h2>About</h2>
+    <p>This is the About section.</p>
+  </section>
+  <section>
+    <h2>Contact</h2>
+    <p>This is the Contact section.</p>
+  </section>
+  <section>
+    <h2>Portfolio</h2>
+    <p>This is the Portfolio section.</p>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2026 My Blog</p>
+</footer>
+
+</body>
+</html>
