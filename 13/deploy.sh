@@ -11,14 +11,14 @@ if [[ -z "$ENV" || -z "$VERSION" ]];then
 	exit 1
 fi
 
-if [[ "$ENV" != "staging" || "$ENV" != "production" ]];then
+if [[ "$ENV" != "staging" && "$ENV" != "production" ]];then
 	echo "Invalid Environment"
 	exit 1
 fi
 
 echo "=========Git uncommited changes stashed======"
 
-if git stash list | grep -q .;then
+if ! git diff --quiet || ! git diff --cached --quiet; then
 	git stash
 	echo "Uncommited changes stashed"
 fi
@@ -37,6 +37,7 @@ echo "=========Deployement archive========="
 tar -czf "$ARCHIVE" \
 	--exclude='.git' \
 	--exclude='node_modules' \
+	.
 
 echo "$TIMESTAMP archive created $ARCHIVE"
 
